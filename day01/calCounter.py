@@ -16,9 +16,9 @@ def count():
 				elfNum += 1
 	return elfCount
 
-def top3():
+def topN(n):
 	""" Find the sum of the top three calories """
 	calCounts = count()
 	calCounts.sort(reverse=True)
-	return calCounts[0] + calCounts[1] + calCounts[2]
+	return sum(calCounts[:n])
 
