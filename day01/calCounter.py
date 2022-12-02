@@ -1,5 +1,5 @@
 def count():
-	""" Count the number of items for each elf """
+	""" Count the number of calories for each elf """
 	elfCount = [0]
 	elfNum = 0
 	with open('data.txt') as dataFile:
@@ -15,4 +15,10 @@ def count():
 				elfCount.append(0)
 				elfNum += 1
 	return elfCount
-		
+
+def top3():
+	""" Find the sum of the top three calories """
+	calCounts = count()
+	calCounts.sort(reverse=True)
+	return calCounts[0] + calCounts[1] + calCounts[2]
+
