@@ -4,7 +4,7 @@ def get_compartments(sack_val):
     compartment_len = len(sack_val)//2
     return [sack_val[:compartment_len],sack_val[compartment_len:]]
 
-def get_duplicates(compartments):
+def get_duplicates(compartments, stop=True):
     """ Finds repeats in the two compartments.
         Currently stops at first duplicate. """
     duplicates = []
@@ -12,7 +12,8 @@ def get_duplicates(compartments):
         found_idx = compartments[1].find(item)
         if found_idx >= 0:
             duplicates.append(item)
-            break
+            if stop:
+                break
     return duplicates
 
 def calc_priority(item):
@@ -33,8 +34,8 @@ def calc_priorities(items):
         priority += calc_priority(item)
     return priority
 
-def run():
-    """ Calculate the total priorities from a rucksack input file. """
+def part_1():
+    """ Calculate the total priorities across compartments from a rucksack input file. """
     all_rucksack_compartments = []
     with open('data.txt', encoding='utf-8') as data_file:
         done = False
@@ -47,5 +48,27 @@ def run():
     all_duplicates = []
     for rucksack in all_rucksack_compartments:
         all_duplicates.extend(get_duplicates(rucksack))
+    total_priority = calc_priorities(all_duplicates)
+    return total_priority
+
+def part_2():
+    """ Calculate the total priorities across elves in a group from a rucksack input file. """
+    all_rucksack_contents = []
+    with open('data.txt', encoding='utf-8') as data_file:
+        done = False
+        while not done:
+            line = data_file.readline().strip()
+            if not line:
+                done = True
+                break
+            all_rucksack_contents.append(line)
+    all_duplicates = []
+    num_groups = len(all_rucksack_contents)//3
+    for group in range(num_groups):
+        idx = group * 3
+        group_dupes = get_duplicates(
+            [all_rucksack_contents[idx],all_rucksack_contents[idx+1]],
+            stop=False)
+        all_duplicates.extend(get_duplicates([group_dupes,all_rucksack_contents[idx+2]]))
     total_priority = calc_priorities(all_duplicates)
     return total_priority
