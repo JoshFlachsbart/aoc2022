@@ -5,8 +5,7 @@ def get_compartments(sack_val):
     return [sack_val[:compartment_len],sack_val[compartment_len:]]
 
 def get_duplicates(compartments, stop=True):
-    """ Finds repeats in the two compartments.
-        Currently stops at first duplicate. """
+    """ Finds repeats in the two compartments.  """
     duplicates = []
     for item in compartments[0]:
         found_idx = compartments[1].find(item)
