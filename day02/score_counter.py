@@ -1,3 +1,4 @@
+""" Module to count RPS score with moves required """
 shape_score = { 'X':1, 'Y':2, 'Z':3 }
 win_score = { 'WIN': 6 , 'LOSE': 0 ,  'DRAW': 3 }
 outcomes = { 'A X' : 'DRAW',

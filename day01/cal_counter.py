@@ -1,3 +1,4 @@
+""" Module to count calories carried by an elf. """
 def count():
     """ Count the number of calories for each elf """
     elf_count = [0]
@@ -16,8 +17,8 @@ def count():
                 elf_num += 1
     return elf_count
 
-def topn(n):
+def topn(num_elves_to_count):
     """ Find the sum of the top three calories """
     cal_counts = count()
     cal_counts.sort(reverse=True)
-    return sum(cal_counts[:n])
+    return sum(cal_counts[:num_elves_to_count])

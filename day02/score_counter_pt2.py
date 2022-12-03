@@ -1,3 +1,4 @@
+""" Module to count RPS score with wins required """
 win_score = { 'X':0, 'Y':3, 'Z':6 }
 shape_score = { 'ROCK': 1 , 'PAPER': 2 ,  'SCIS': 3 }
 outcomes = { 'A X' : 'SCIS',
@@ -23,4 +24,3 @@ def calc_score():
             elf_score += win_score[line.split()[1]]
             elf_score += shape_score[outcomes[line]]
     return elf_score
-
