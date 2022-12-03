@@ -1,24 +1,23 @@
 def count():
-	""" Count the number of calories for each elf """
-	elfCount = [0]
-	elfNum = 0
-	with open('data.txt') as dataFile:
-		done = False
-		while not done:
-			line = dataFile.readline()
-			if not line:
-				done = True
-				break
-			if line.strip():
-				elfCount[elfNum] += int(line)
-			else:
-				elfCount.append(0)
-				elfNum += 1
-	return elfCount
+    """ Count the number of calories for each elf """
+    elf_count = [0]
+    elf_num = 0
+    with open('data.txt', encoding='utf-8') as data_file:
+        done = False
+        while not done:
+            line = data_file.readline()
+            if not line:
+                done = True
+                break
+            if line.strip():
+                elf_count[elf_num] += int(line)
+            else:
+                elf_count.append(0)
+                elf_num += 1
+    return elf_count
 
-def topN(n):
-	""" Find the sum of the top three calories """
-	calCounts = count()
-	calCounts.sort(reverse=True)
-	return sum(calCounts[:n])
-
+def topn(n):
+    """ Find the sum of the top three calories """
+    cal_counts = count()
+    cal_counts.sort(reverse=True)
+    return sum(cal_counts[:n])
