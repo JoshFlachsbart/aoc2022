@@ -57,15 +57,9 @@ def run():
     """ Calculate the total priorities across compartments from a rucksack input file. """
     all_rucksack_contents = []
     with open('data.txt', encoding='utf-8') as data_file:
-        done = False
-        while not done:
-            line = data_file.readline().strip()
-            if not line:
-                done = True
-                break
-            all_rucksack_contents.append(line)
+        all_rucksack_contents = [line.strip() for line in data_file]
 
-    print('Compartments: ', calc_compartments(all_rucksack_contents))
-    print('Groups: ', calc_groups(all_rucksack_contents))
+    print('Compartments 8349: ', calc_compartments(all_rucksack_contents))
+    print('Groups 2681: ', calc_groups(all_rucksack_contents))
 
 run()
