@@ -4,11 +4,9 @@ def count():
     elf_count = [0]
     elf_num = 0
     with open('data.txt', encoding='utf-8') as data_file:
-        done = False
-        while not done:
+        while data_file:
             line = data_file.readline()
             if not line:
-                done = True
                 break
             if line.strip():
                 elf_count[elf_num] += int(line)
@@ -22,3 +20,6 @@ def topn(num_elves_to_count):
     cal_counts = count()
     cal_counts.sort(reverse=True)
     return sum(cal_counts[:num_elves_to_count])
+
+print('Completed Part 1 with 70374: ', topn(1))
+print('Completed Part 2 with 204610: ', topn(3))
