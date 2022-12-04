@@ -3,6 +3,10 @@ def section_contains(sec_a, sec_b) -> bool:
     """ Check if the first section contains the second section """
     return sec_a[0] <= sec_b[0] and sec_a[1] >= sec_b[1]
 
+def section_not_overlaps(sec_a, sec_b) -> bool:
+    """ Check if the first section contains the second section """
+    return sec_a[0] > sec_b[1] or sec_a[1] < sec_b[0]
+
 def pair_section_contains(sections_pair) -> bool:
     """ Compare one direction then the other. """
     return section_contains(sections_pair[0], sections_pair[1]) or section_contains(sections_pair[1], sections_pair[0])
@@ -37,9 +41,12 @@ def run():
     for sections_pair in all_pair_sections:
         if pair_section_contains(sections_pair):
             count += 1
-            print('Contains: ')
-        print(sections_pair)
     print('Total Pairs', len(all_pair_sections))
+    print('Containing Pairs: ', count)
+    count = 0
+    for sections_pair in all_pair_sections:
+        if not section_not_overlaps(sections_pair[0], sections_pair[1]):
+            count += 1
     print('Overlapping Pairs: ', count)
 
 run()
