@@ -43,11 +43,7 @@ def read_file(file_name):
     """ Read a full pair listing from a file """
     all_pair_sections = []
     with open(file_name, encoding='utf-8') as data_file:
-        while data_file:
-            line = data_file.readline().strip()
-            if not line:
-                break
-            all_pair_sections.append(load_pair(line))
+        all_pair_sections = [load_pair(line.strip()) for line in data_file]
     return all_pair_sections
 
 def run():
