@@ -46,20 +46,19 @@ def calc_groups(all_rucksack_contents):
     num_groups = len(all_rucksack_contents)//3
     for group in range(num_groups):
         idx = group * 3
-        cont_a = all_rucksack_contents[idx]
-        cont_b = all_rucksack_contents[idx+1]
-        cont_c = all_rucksack_contents[idx+2]
+        (cont_a, cont_b, cont_c) = all_rucksack_contents[idx:idx+3]
         group_dupes = get_duplicates(cont_a, cont_b, stop=False)
         all_duplicates.extend(get_duplicates(group_dupes,cont_c))
     return calc_priorities(all_duplicates)
 
-def run():
+def load_all_contents():
     """ Calculate the total priorities across compartments from a rucksack input file. """
-    all_rucksack_contents = []
     with open('data.txt', encoding='utf-8') as data_file:
-        all_rucksack_contents = [line.strip() for line in data_file]
+        return [line.strip() for line in data_file]
 
-    print('Compartments 8349: ', calc_compartments(all_rucksack_contents))
-    print('Groups 2681: ', calc_groups(all_rucksack_contents))
+def run ():
+    all_rucksack_contents = load_all_contents()
+    print('Compartments 8349:', calc_compartments(all_rucksack_contents))
+    print('Groups 2681:', calc_groups(all_rucksack_contents))
 
 run()
