@@ -8,6 +8,7 @@ Dir = {
 }
 
 class Tree:
+    """ Wow was this overkill. Was so sure I was going to need more structure when we hit part 2. """
     height: int
     viz: list
     view: list
