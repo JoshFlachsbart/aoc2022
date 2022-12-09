@@ -50,7 +50,7 @@ def run():
     """ Count all pairs with fully contained or overlapping sections """
     all_pair_sections = read_file('data.txt')
     print('Total Pairs', len(all_pair_sections))
-    print('Containing Pairs: ', count_containing_pairs(all_pair_sections))
-    print('Overlapping Pairs: ', count_overlapping_pairs(all_pair_sections))
+    print('Containing Pairs 485: ', count_containing_pairs(all_pair_sections))
+    print('Overlapping Pairs 857: ', count_overlapping_pairs(all_pair_sections))
 
 run()
